@@ -12,6 +12,7 @@ class AcornsLessons: NSObject  {
     let fileManager = FileManager.default
     
     var error: NSError?
+    var errorMessage = "";
 
     /** Find the path to the application documents directory */
     func applicationDocumentsDirectory() -> String! {
@@ -172,6 +173,148 @@ class AcornsLessons: NSObject  {
         return result
     }
     
+    func getWarningMessage() ->String
+    {
+        return errorMessage
+    }
+
+    /** Read a text file, so a global search and replace, and write the edited file back
+     *     This is needed to accommodate renamed Apple archives
+     */
+    func editFile(path: String, from: String, to: String) -> Bool
+    {
+        if from == to
+        {
+            return true
+        }
+        var source = ""
+        do
+        {
+            source = try String(contentsOfFile: path, encoding: .utf8)
+        } catch let error as NSError { print(error); return false }
+        
+        source = source.replacingOccurrences(of: from, with: to)
+        
+        do
+        {
+            try source.write(toFile: path, atomically: true, encoding: .utf8)
+        } catch let error as NSError { print(error); return false }
+
+        return true;
+    }
+
+    /** Function to unzip and rename unzipped files if necessary
+      * Note: because duplicate downloaded files have their name changed by Apple, the uncompressed file names need to be changed to match
+      */
+    func unzipAndRename(_ lessonName: String) ->String
+    {
+        let temp = applicationCachesDirectory()
+        let tempDirectory = (temp! as NSString).appendingPathComponent("_" + lessonName)
+        let badArchive = "Illegal archive"
+        let badSize = "Illegal archive size"
+        let badContent = "Illegal archive content"
+        let badName = "Illegal archive name"
+        let badEdit = "Couldn't edit file"
+        
+        try? fileManager.removeItem(atPath: tempDirectory)
+        try? fileManager.createDirectory(atPath: tempDirectory, withIntermediateDirectories:false)
+        
+        let fileName = lessonName + ".acorns"
+        let result = unzip(fileName, destination: tempDirectory)
+        if !result
+        {
+            NSLog(badArchive)
+            return badArchive        }
+        
+       let files = directoryListing(tempDirectory);
+       let fileCount = files.count
+       if (fileCount != 2)
+        {
+            NSLog(badSize);
+            return badSize
+        }
+        
+
+        var oldLessonName = (files[0] as NSString).deletingPathExtension
+        var fileExtension = (files[0] as NSString).pathExtension
+        if !(lessonName.hasPrefix(oldLessonName) && (fileExtension.isEmpty  || fileExtension == "html"))
+        {
+            NSLog(badName)
+            return badName
+        }
+
+        var oldFilePath = (tempDirectory as NSString).appendingPathComponent(files[0])
+        var newFileName = lessonName
+        var newFilePath = (temp! as NSString).appendingPathComponent(newFileName)
+        
+        var dir = false;
+        if isDirectory(oldFilePath) {
+           dir = true;
+        }
+        else {
+            newFileName += "." + fileExtension
+            newFilePath += "." + fileExtension
+            if !editFile(path: oldFilePath, from: oldLessonName, to: lessonName)
+            {
+                NSLog (badEdit)
+                return badEdit
+            }
+        }
+        var badMove = "Couldn't move " + oldFilePath + " to " + newFilePath
+        
+        do {
+            try fileManager.moveItem(atPath: oldFilePath, toPath: newFilePath)
+        } catch {
+            NSLog(badMove)
+            return badMove;
+        }
+        
+        oldLessonName = (files[1] as NSString).deletingPathExtension
+        fileExtension = (files[1] as NSString).pathExtension
+        if !(lessonName.hasPrefix(oldLessonName) && (fileExtension.isEmpty  || fileExtension == "html"))
+        {
+            NSLog(badName)
+            return badName
+        }
+
+        oldFilePath = (tempDirectory as NSString).appendingPathComponent(files[1])
+        newFileName = lessonName
+        newFilePath = (temp! as NSString).appendingPathComponent(newFileName)
+
+        if isDirectory(oldFilePath)
+        {
+            if dir {
+                NSLog(badContent)
+                return badContent;
+            }
+        }
+        else
+        {
+            if !dir {
+                NSLog (badContent)
+                return badContent;
+            }
+            newFileName += "." + fileExtension
+            newFilePath += "." + fileExtension
+            if !editFile(path: oldFilePath, from: oldLessonName, to: lessonName)
+            {
+                NSLog (badEdit)
+                return badEdit
+            }
+        }
+                
+        badMove = "Couldn't move " + oldFilePath + " to " + newFilePath
+        do {
+            try fileManager.moveItem(atPath: oldFilePath, toPath: newFilePath)
+        } catch {
+            NSLog(badMove)
+            return badMove
+        }
+        try? fileManager.removeItem(atPath: tempDirectory)
+        return ""
+    }
+
+    
     /** Insert a lesson into the mutable array */
     func insertLesson(_ data: NSMutableArray, item: String) {
         var index = 0
@@ -218,32 +361,24 @@ class AcornsLessons: NSObject  {
     /* If file has not been copied into the application inbox, do it now */
     func copyLesson(_ fromURL: URL)
     {
-        let inboxName = "Inbox"
         var from = fromURL.path
-        if from.hasSuffix(".zip")
-        {
-            let count = from.count
-            from = String(from.prefix(count-4))
-        }
-        NSLog("Path = " + from)
-        
-        let exist = from.contains(inboxName)
+        let exist = from.contains("Inbox")
         if exist
         {
             NSLog("file already copied")
             return
         }
         
-        var lessonName = from
-        let zip = ".zip"
-        if from.hasSuffix(zip)
+        if from.hasSuffix(".zip")
         {
-          let lessonName = lessonName.prefix(lessonName.count - zip.count)
-          NSLog("stripped name" + lessonName)
+            let count = from.count
+            from = String(from.prefix(count-4))
         }
-      
-        lessonName = getLessonName(lessonName)
-        lessonName = lessonName + ".acorns"
+        
+ 
+        let lessonName = getLessonName(from) + ".acorns"
+        NSLog("Lesson name = " + lessonName)
+        
         let documents = applicationDocumentsDirectory()
         let to = (documents! as NSString).appendingPathComponent(lessonName)
         let toURL = NSURL.fileURL(withPath: to)
@@ -280,8 +415,7 @@ class AcornsLessons: NSObject  {
     func processInboxDirectory(_ objects: NSMutableArray) {
         let inbox = applicationInboxDirectory()
         let documents = applicationDocumentsDirectory()
-        let temp = applicationCachesDirectory()
-
+ 
         let list = directoryListing(inbox)
         for item in (list as [String])
         {
@@ -304,8 +438,9 @@ class AcornsLessons: NSObject  {
                 error = error1; error(from)
             }
             
-            let result = unzip(compressedName, destination: temp!)
-            if !result
+            let result = unzipAndRename(lessonName!)
+            errorMessage = result
+            if result.isEmpty
             {
                 do {
                     try fileManager.removeItem(atPath: compressedName)
@@ -346,7 +481,6 @@ class AcornsLessons: NSObject  {
         let objects = NSMutableArray()
         let documents = applicationDocumentsDirectory()
         let list = directoryListing(documents!)
-        let temp = applicationCachesDirectory()
         
         purgeGallery() // Delete lessons no longer in the gallery from the cache
         for item in list as [String] {
@@ -355,9 +489,10 @@ class AcornsLessons: NSObject  {
                 insertLesson(objects, item: lessonName!)
                 if !lessonExist(lessonName!)
                 {
-                    NSLog("Lesson name = %@ doesn't exist", lessonName!)
-                    let result = unzip(item, destination: temp!)
-                    if !result
+                    NSLog("Lesson name = " + lessonName! + " doesn't exist")
+                    let result = unzipAndRename(lessonName!)
+                    errorMessage = result
+                    if !result.isEmpty
                     {
                          do
                          {

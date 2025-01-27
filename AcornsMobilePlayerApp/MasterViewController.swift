@@ -31,6 +31,14 @@ class MasterViewController: UITableViewController {
         self.title = "Lessons"
     }
     
+    func showAlert(warning: String)
+    {
+        if warning.isEmpty {return;}
+        let alert = UIAlertController(title: "Notification Message", message: warning, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     /* Insert new lesson from email, web, or cloud */
     func insertNewObject(sender: AnyObject, webAddress address:NSString) {
         lessonNames.insert(address, at: 0)
@@ -86,6 +94,9 @@ class MasterViewController: UITableViewController {
         if lessonObject == nil { lessonObject = AcornsLessons()  }
         
         lessonNames = lessonObject!.findLessons()
+        let message = lessonObject!.getWarningMessage()
+        showAlert(warning: message)
+
         tableView.reloadData()
         if lessonNames.count >  0
         {
@@ -127,6 +138,8 @@ class MasterViewController: UITableViewController {
             {
                 lessonObject = AcornsLessons()
                 self.lessonNames = lessonObject!.findLessons()
+                let message = lessonObject!.getWarningMessage()
+                showAlert(warning: message)
             }
             
             displayLesson(0)

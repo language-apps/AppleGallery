@@ -89,7 +89,7 @@ class DetailViewController: UIViewController, WKUIDelegate {
             if let _: AnyObject = self.detailItem {
                 let lessonObject = AcornsLessons()
                 let request = lessonObject.lessonURL(detailItem as! String)
-                webView[0].configuration.preferences.javaScriptEnabled = true
+                webView[0].configuration.defaultWebpagePreferences.allowsContentJavaScript = true
                 webView[0].configuration.allowsInlineMediaPlayback = true
                 webView[0].configuration.mediaTypesRequiringUserActionForPlayback = []
 
