@@ -73,9 +73,10 @@ class DetailViewController: UIViewController, WKUIDelegate {
             {
                 let lessonObject = AcornsLessons();
                 let lessonNames = lessonObject.findLessons();
+                print("found " + String(lessonNames!.count) + " lessons")
                 if (lessonNames!.count == 0)
                 {
-                    let htmlPage = "<html><head></head><body><p align=center>No Lesson available to display<br/><br/> Select the file icon to display the samples<br/><br/>Otherwise download lessons created with the Acorns app<br /><br/>Check out cs.sou.edu/~harveyd/acorns or acornslinguistics.com for details</body></html><br><a href=sou.com>sou</a>"
+                    let htmlPage = "<html><head></head><body><p align=center style=\"font-size: 60px\" ><br/><br/>No Lesson available to display. Select the file icon to display the samples<br/><br/>Otherwise download lessons created with the Acorns app. Check out https://acornslinguistics.com for details</body></html>"
                     webView[0].loadHTMLString(htmlPage, baseURL:nil)
                     NSLog("Load empty page")
                     return

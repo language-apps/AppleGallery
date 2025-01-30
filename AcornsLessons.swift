@@ -215,6 +215,7 @@ class AcornsLessons: NSObject  {
         let badContent = "Illegal archive content"
         let badName = "Illegal archive name"
         let badEdit = "Couldn't edit file"
+        let badDuplicate = "Lesson already downloaded"
         
         try? fileManager.removeItem(atPath: tempDirectory)
         try? fileManager.createDirectory(atPath: tempDirectory, withIntermediateDirectories:false)
@@ -260,8 +261,14 @@ class AcornsLessons: NSObject  {
                 return badEdit
             }
         }
-        var badMove = "Couldn't move " + oldFilePath + " to " + newFilePath
         
+        var badMove = "Couldn't move " + oldFilePath + " to " + newFilePath
+        if fileManager.fileExists(atPath: newFilePath)
+        {
+            NSLog(badDuplicate)
+            return badDuplicate
+        }
+
         do {
             try fileManager.moveItem(atPath: oldFilePath, toPath: newFilePath)
         } catch {
@@ -301,6 +308,12 @@ class AcornsLessons: NSObject  {
                 NSLog (badEdit)
                 return badEdit
             }
+        }
+        
+        if fileManager.fileExists(atPath: newFilePath)
+        {
+            NSLog(badDuplicate)
+            return badDuplicate
         }
                 
         badMove = "Couldn't move " + oldFilePath + " to " + newFilePath

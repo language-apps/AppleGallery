@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		0BA68A952488528E0016852D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BA68A942488528E0016852D /* Default-568h@2x.png */; };
 		0BC8CA501F54F39F00C4BAA8 /* sampleLessons in Resources */ = {isa = PBXBuildFile; fileRef = 0BC8CA4F1F54F39F00C4BAA8 /* sampleLessons */; };
+		0BC9650E2D4B0BD600EBD908 /* Web Content.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = 0BC965072D4B0BD600EBD908 /* Web Content.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		793F58841B61C33D0027824A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F58831B61C33D0027824A /* AppDelegate.swift */; };
 		793F58861B61C33D0027824A /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F58851B61C33D0027824A /* MasterViewController.swift */; };
 		793F58881B61C33D0027824A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793F58871B61C33D0027824A /* DetailViewController.swift */; };
@@ -26,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0BC9650C2D4B0BD600EBD908 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 793F58761B61C33D0027824A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0BC965062D4B0BD600EBD908;
+			remoteInfo = "Web Content";
+		};
 		793F58961B61C33D0027824A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 793F58761B61C33D0027824A /* Project object */;
@@ -35,9 +43,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0BC964F22D4B0A8500EBD908 /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+				0BC9650E2D4B0BD600EBD908 /* Web Content.appex in Embed ExtensionKit Extensions */,
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0BA68A942488528E0016852D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		0BC8CA4F1F54F39F00C4BAA8 /* sampleLessons */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sampleLessons; sourceTree = "<group>"; };
+		0BC965072D4B0BD600EBD908 /* Web Content.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = "Web Content.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		793F587E1B61C33D0027824A /* AcornsGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AcornsGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		793F58821B61C33D0027824A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		793F58831B61C33D0027824A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +89,30 @@
 		79E5B4A81D709541003F611D /* AcornsGallery.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AcornsGallery.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0BC9650F2D4B0BD600EBD908 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 0BC965062D4B0BD600EBD908 /* Web Content */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		0BC964E72D4B0A8500EBD908 /* Web Browser Content */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Web Browser Content"; sourceTree = "<group>"; };
+		0BC964F82D4B0B3600EBD908 /* Web Browser Content */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Web Browser Content"; sourceTree = "<group>"; };
+		0BC965082D4B0BD600EBD908 /* Web Content */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0BC9650F2D4B0BD600EBD908 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Web Content"; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		0BC965042D4B0BD600EBD908 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		793F587B1B61C33D0027824A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +140,9 @@
 				7966D7FA1B64489900FBEECE /* libz.dylib */,
 				793F58801B61C33D0027824A /* AcornsMobilePlayerApp */,
 				793F58981B61C33D0027824A /* AcornsMobilePlayerAppTests */,
+				0BC964E72D4B0A8500EBD908 /* Web Browser Content */,
+				0BC964F82D4B0B3600EBD908 /* Web Browser Content */,
+				0BC965082D4B0BD600EBD908 /* Web Content */,
 				793F587F1B61C33D0027824A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -103,6 +152,7 @@
 			children = (
 				793F587E1B61C33D0027824A /* AcornsGallery.app */,
 				793F58951B61C33D0027824A /* AcornsGalleryTests.xctest */,
+				0BC965072D4B0BD600EBD908 /* Web Content.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -170,6 +220,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0BC965062D4B0BD600EBD908 /* Web Content */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0BC965102D4B0BD600EBD908 /* Build configuration list for PBXNativeTarget "Web Content" */;
+			buildPhases = (
+				0BC965032D4B0BD600EBD908 /* Sources */,
+				0BC965042D4B0BD600EBD908 /* Frameworks */,
+				0BC965052D4B0BD600EBD908 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				0BC965082D4B0BD600EBD908 /* Web Content */,
+			);
+			name = "Web Content";
+			packageProductDependencies = (
+			);
+			productName = "Web Content";
+			productReference = 0BC965072D4B0BD600EBD908 /* Web Content.appex */;
+			productType = "com.apple.product-type.extensionkit-extension";
+		};
 		793F587D1B61C33D0027824A /* AcornsGallery */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 793F589F1B61C33D0027824A /* Build configuration list for PBXNativeTarget "AcornsGallery" */;
@@ -177,10 +249,12 @@
 				793F587A1B61C33D0027824A /* Sources */,
 				793F587B1B61C33D0027824A /* Frameworks */,
 				793F587C1B61C33D0027824A /* Resources */,
+				0BC964F22D4B0A8500EBD908 /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0BC9650D2D4B0BD600EBD908 /* PBXTargetDependency */,
 			);
 			name = AcornsGallery;
 			productName = AcornsMobilePlayerApp;
@@ -211,14 +285,17 @@
 		793F58761B61C33D0027824A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftMigration = 0730;
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1130;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "Dan Harvey";
 				TargetAttributes = {
+					0BC965062D4B0BD600EBD908 = {
+						CreatedOnToolsVersion = 16.2;
+					};
 					793F587D1B61C33D0027824A = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = WP225AN5N6;
 						LastSwiftMigration = 1130;
 						SystemCapabilities = {
 							com.apple.iCloud = {
@@ -248,11 +325,19 @@
 			targets = (
 				793F587D1B61C33D0027824A /* AcornsGallery */,
 				793F58941B61C33D0027824A /* AcornsGalleryTests */,
+				0BC965062D4B0BD600EBD908 /* Web Content */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0BC965052D4B0BD600EBD908 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		793F587C1B61C33D0027824A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -275,6 +360,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0BC965032D4B0BD600EBD908 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		793F587A1B61C33D0027824A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -302,6 +394,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0BC9650D2D4B0BD600EBD908 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0BC965062D4B0BD600EBD908 /* Web Content */;
+			targetProxy = 0BC9650C2D4B0BD600EBD908 /* PBXContainerItemProxy */;
+		};
 		793F58971B61C33D0027824A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 793F587D1B61C33D0027824A /* AcornsGallery */;
@@ -329,6 +426,89 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0BC965112D4B0BD600EBD908 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WP225AN5N6;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Web Content/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Web Content";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Dan Harvey. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 2.2.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.Networking;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0BC965122D4B0BD600EBD908 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 9;
+				DEVELOPMENT_TEAM = WP225AN5N6;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Web Content/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Web Content";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025 Dan Harvey. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 2.2.2;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.apple.WebKit.Networking;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		793F589D1B61C33D0027824A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -352,6 +532,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -409,6 +590,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -445,9 +627,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 9;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WP225AN5N6;
 				INFOPLIST_FILE = AcornsMobilePlayerApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.acorns.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AcornsGallery;
@@ -469,9 +657,15 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 9;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = WP225AN5N6;
 				INFOPLIST_FILE = AcornsMobilePlayerApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MARKETING_VERSION = 2.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.acorns.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AcornsGallery;
@@ -487,6 +681,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = WP225AN5N6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -496,7 +691,11 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = AcornsMobilePlayerAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.acorns.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AcornsGalleryTests;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -509,12 +708,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = WP225AN5N6;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = AcornsMobilePlayerAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.acorns.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = AcornsGalleryTests;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
@@ -526,6 +730,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0BC965102D4B0BD600EBD908 /* Build configuration list for PBXNativeTarget "Web Content" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0BC965112D4B0BD600EBD908 /* Debug */,
+				0BC965122D4B0BD600EBD908 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		793F58791B61C33D0027824A /* Build configuration list for PBXProject "AcornsGallery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
